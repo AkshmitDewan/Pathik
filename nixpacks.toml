@@ -1,0 +1,24 @@
+# nixpacks.toml
+[build]
+image = "railwayapp/python:3.8"
+
+[build.steps]
+  [build.steps.python]
+  cmd = "python"
+  args = ["--version"]
+
+  [build.steps.install-dependencies]
+  cmd = "pip"
+  args = ["install", "-r", "requirements.txt"]
+
+  [build.steps.run-tests]
+  cmd = "python"
+  args = ["-m", "pytest"]
+
+[start]
+cmd = "uvicorn pathik:app --host 0.0.0.0 --port $PORT"
+
+[routes]
+  src = "/upload"
+  dest = "app:app"
+  methods = ["POST"]

@@ -1,0 +1,11 @@
+# railway.yml
+version: 2
+name: pathik-api
+
+start: uvicorn pathik:app --reload
+
+routes:
+  - src: /upload
+    dest: app:app
+    methods:
+      - POST
