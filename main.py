@@ -97,6 +97,3 @@ async def upload_files(request:Request):
 
     return {"message": "Files uploaded successfully"}
     
-@app.get("/")
-def get_started():
-    return "Started"
